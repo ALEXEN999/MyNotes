@@ -26,6 +26,8 @@ import io.realm.Realm;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    Realm realm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        realm = MyNotes.realm;
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.

@@ -45,8 +45,7 @@ public class MyNotesViewModel extends AndroidViewModel {
 
                 Note noteTmp = realm.createObject(Note.class, nextId);
 
-                noteTmp.setTitle(note.getTitle());
-                noteTmp.setContent(note.getContent());
+                noteTmp.setFullContent(note.getFullContent());
 
                 realm.insertOrUpdate(noteTmp);
             }
@@ -58,8 +57,7 @@ public class MyNotesViewModel extends AndroidViewModel {
             @Override
             public void execute(Realm realm) {
                 Note editarNota = obtenerNotasDetallePorId(id);
-                editarNota.setTitle(note.getTitle());
-                editarNota.setContent(note.getContent());
+                editarNota.setFullContent(note.getFullContent());
             }
         });
     }

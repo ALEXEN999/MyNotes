@@ -114,8 +114,10 @@ public class HomeFragment extends Fragment {
         public void onBindViewHolder(@NonNull TareaViewHolder holder, int position) {
             final Note note = tareaDetalleList.get(position);
             Log.i("Logger", String.valueOf(note.getId()));
-            holder.titleTextView.setText(note.getTitle());
+            holder.titleTextView.setText(note.getFullContent());
+            String[] sep = note.getFullContent().split("/");
 
+            holder.titleTextView.setText(sep[0]+""+sep[1]);
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

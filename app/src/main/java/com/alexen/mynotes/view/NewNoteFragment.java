@@ -65,8 +65,10 @@ public class NewNoteFragment extends Fragment {
 
         if (myNotesViewModel.isUserEdit) {
             noteSelecionada = myNotesViewModel.obtenerNotasDetallePorId(myNotesViewModel.userToEditId);
-            titleEditText.setText(noteSelecionada.getTitle());
-            contentEditText.setText(noteSelecionada.getContent());
+            String[] sep = noteSelecionada.getFullContent().split("/");
+
+            titleEditText.setText(sep[0]);
+            contentEditText.setText(sep[1]);
         }
 
 
@@ -83,15 +85,14 @@ public class NewNoteFragment extends Fragment {
                 }
                 if (myNotesViewModel.isUserEdit) {
                     Note note = new Note();
-                    note.setTitle(titleEditText.getText().toString());
-                    note.setContent(contentEditText.getText().toString());
+                    note.setFullContent(titleEditText.getText().toString()+"/"+contentEditText.getText().toString());
 
                     myNotesViewModel.actualizarNota(myNotesViewModel.userToEditId, note);
                     noteSelecionada = null;
                     myNotesViewModel.isUserEdit = false;
                     myNotesViewModel.userToEditId = 0;
                 }
-                else myNotesViewModel.insertarNota(new Note(titleEditText.getText().toString(), contentEditText.getText().toString()));
+                else myNotesViewModel.insertarNota(new Note(titleEditText.getText().toString()+"/"+ contentEditText.getText().toString()));
                 navController.popBackStack();
             }
         });
